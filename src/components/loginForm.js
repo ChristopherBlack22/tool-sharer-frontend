@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import an action to use with fetch?
 
 class LoginForm extends Component {
 
@@ -19,8 +18,7 @@ class LoginForm extends Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        // this.props.postSignupForm(this.state); This will be different
-
+        this.props.loginUser(this.state)
         this.setState({
             user: {
                 username: "",

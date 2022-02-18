@@ -5,7 +5,11 @@ export default function currentUserReducer (state = {requestingFromAPI: false}, 
             return {
                 requestingFromAPI: true
             };
-        case "SIGNUP_&_LOGIN_USER":
+        case "LOGIN_USER":
+            return {
+                requestingFromAPI: false
+            };
+        case "COMPLETED_WITH_ERROR":
             return {
                 requestingFromAPI: false
             };
