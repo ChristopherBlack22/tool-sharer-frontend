@@ -1,18 +1,33 @@
+import React, { Component } from 'react';
+
 import './App.css';
+import SignupForm from './components/signupForm'
+import { signupNewUser } from './actions/users';
+import { connect } from 'react-redux';
 
-import { BrowserRouter as Router, Route } from 'react-router;'
+// import { BrowserRouter as Router, Route } from 'react-router';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload. This is my app
-        </p>
-       
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        App Component
+        <SignupForm signupNewUser={this.props.signupNewUser} />
+        {/* <LoginForm  /> */}
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {state: state};
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signupNewUser: (newUserData) => dispatch(signupNewUser(newUserData))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
