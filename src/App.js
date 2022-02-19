@@ -8,18 +8,36 @@ import { connect } from 'react-redux';
 
 // import { BrowserRouter as Router, Route } from 'react-router';
 
-
 class App extends Component {
+
   render() {
-    return (
-      <div className="App">
-        App Component
-        <SignupForm signupNewUser={this.props.signupNewUser} />
-        <LoginForm  loginUser={this.props.loginUser} />
-      </div>
-    );
+
+    if (localStorage.getItem("jwt") && this.props.state.currentUser.id) {
+      return  <p>logged in App Component</p>
+    } else {
+      localStorage.removeItem("jwt");
+      return (
+        <div className="App">
+          Not logged in App Component
+          <SignupForm signupNewUser={this.props.signupNewUser} />
+          <LoginForm  loginUser={this.props.loginUser} />
+        </div>
+      );
+    }
   }
 }
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div className="App">
+//         App Component
+//         <SignupForm signupNewUser={this.props.signupNewUser} />
+//         <LoginForm  loginUser={this.props.loginUser} />
+//       </div>
+//     );
+//   }
+// }
 
 //is this required?
 const mapStateToProps = state => {
