@@ -5,39 +5,40 @@ import SignupForm from './components/signupForm'
 import LoginForm from './components/loginForm'
 import { signupNewUser, loginUser } from './actions/users';
 import { connect } from 'react-redux';
+import { render } from '@testing-library/react';
 
 // import { BrowserRouter as Router, Route } from 'react-router';
 
 class App extends Component {
 
-  render() {
-
-    if (localStorage.jwt && this.props.state.currentUser.id) {
-      return  <p>logged in App Component</p>
-    } else {
-      localStorage.removeItem("jwt");
-      return (
-        <div className="App">
-          Not logged in App Component
-          <SignupForm signupNewUser={this.props.signupNewUser} />
-          <LoginForm  loginUser={this.props.loginUser} />
-        </div>
-      );
+  render(){
+    let userLoggedIn;
+    if(localStorage.jwt && this.props.state.currentUser.id) {
+        userLoggedIn = true
+      } else {
+      localStorage.removeItem("jwt"); //ensure jwt hasnt been left from incorrect logout or maliciously added
+      userLoggedIn = false
     }
+
+    return (
+      <div className="App">
+        <h1>Tool Sharer App</h1>
+        <div>NavBar Component</div>
+        {userLoggedIn ? (
+          <div>Categories Container Component</div>
+        ) : (
+          <div>User Forms Component</div>
+        )}
+      </div>      
+    )
   }
+
+
 }
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         App Component
-//         <SignupForm signupNewUser={this.props.signupNewUser} />
-//         <LoginForm  loginUser={this.props.loginUser} />
-//       </div>
-//     );
-//   }
-// }
+{/* <SignupForm signupNewUser={this.props.signupNewUser} />
+<LoginForm  loginUser={this.props.loginUser} /> */}
+
 
 //is this required?
 const mapStateToProps = state => {
