@@ -12,7 +12,7 @@ class App extends Component {
 
   render() {
 
-    if (localStorage.getItem("jwt") && this.props.state.currentUser.id) {
+    if (localStorage.jwt && this.props.state.currentUser.id) {
       return  <p>logged in App Component</p>
     } else {
       localStorage.removeItem("jwt");
