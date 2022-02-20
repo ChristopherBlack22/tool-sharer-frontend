@@ -11,7 +11,7 @@ class App extends Component {
 
   render() {
     let userLoggedIn;
-    if(localStorage.jwt && this.props.state.currentUser.id) {
+    if(localStorage.jwt && this.props.currentUserId) {
         userLoggedIn = true
       } else {
       localStorage.removeItem("jwt"); //ensure jwt hasnt been left from incorrect logout or maliciously added
@@ -32,4 +32,8 @@ class App extends Component {
 
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {currentUserId: state.currentUser.id};
+}
+
+export default connect(mapStateToProps)(App);
