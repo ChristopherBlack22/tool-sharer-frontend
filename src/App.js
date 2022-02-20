@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import CategoriesContainer from './components/categoriesContainer';
+import ToolsContainer from './components/toolsContainer';
 import UserFormsContainer from './components/userFormsContainer'
 import { connect } from 'react-redux';
 // import { render } from '@testing-library/react';
@@ -23,7 +23,7 @@ class App extends Component {
         <h1>Tool Sharer App</h1>
         <div>NavBar Component</div>
         {userLoggedIn ? (
-          <CategoriesContainer />
+          <ToolsContainer />
         ) : (
           <UserFormsContainer />
         )}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CategoriesContainer extends Component {
+class ToolsContainer extends Component {
 
     // componentDidMount(){
 
@@ -8,9 +8,9 @@ class CategoriesContainer extends Component {
 
     render() {
         return (
-            <div>CategoriesContainer</div>
+            <div>ToolsContainer</div>
         )
     }
 }
 
-export default CategoriesContainer;
+export default ToolsContainer;

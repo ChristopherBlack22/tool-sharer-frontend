@@ -10,6 +10,7 @@ class UserFormsContainer extends Component {
         return (
             <div>
                 <SignupForm signupNewUser={this.props.signupNewUser} />
+                <h4><em>or</em></h4>
                 <LoginForm  loginUser={this.props.loginUser} />
             </div>
         )
