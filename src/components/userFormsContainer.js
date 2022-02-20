@@ -22,11 +22,11 @@ const mapStateToProps = state => {
     return {state: state};
   }
   
-  const mapDispatchToProps = dispatch => {
-    return {
-      signupNewUser: (newUserData) => dispatch(signupNewUser(newUserData)),
-      loginUser: (userData) => dispatch(loginUser(userData))
-    }
+const mapDispatchToProps = dispatch => {
+  return {
+    signupNewUser: (newUserData) => dispatch(signupNewUser(newUserData)),
+    loginUser: (userData) => dispatch(loginUser(userData))
   }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(UserFormsContainer);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserFormsContainer);
