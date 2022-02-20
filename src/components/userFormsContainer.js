@@ -20,7 +20,7 @@ class UserFormsContainer extends Component {
 //is this required?
 const mapStateToProps = state => {
     return {state: state};
-  }
+}
   
 const mapDispatchToProps = dispatch => {
   return {
