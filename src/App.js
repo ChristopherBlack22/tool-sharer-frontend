@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ToolsContainer from './components/toolsContainer';
+import CategoriesContainer from './components/categoriesContainer';
 import UserFormsContainer from './components/userFormsContainer'
 import { connect } from 'react-redux';
 // import { render } from '@testing-library/react';
@@ -8,11 +8,13 @@ import { connect } from 'react-redux';
 
 // import { BrowserRouter as Router, Route } from 'react-router';
 
+import { token } from '../index';
+
 class App extends Component {
 
   render() {
     let userLoggedIn;
-    if(localStorage.jwt && this.props.currentUserId) {
+    if(token && this.props.currentUserId) {
         userLoggedIn = true
       } else {
       localStorage.removeItem("jwt"); //ensure jwt hasnt been left from incorrect logout or maliciously added
@@ -23,7 +25,7 @@ class App extends Component {
         <h1>Tool Sharer App</h1>
         <div>NavBar Component</div>
         {userLoggedIn ? (
-          <ToolsContainer />
+          <CategoriesContainer />
         ) : (
           <UserFormsContainer />
         )}
