@@ -7,7 +7,7 @@ export default function categoriesReducer (state = [], action) {
             };
 
         default:
-            state;
+            return state;
 
     }
 }

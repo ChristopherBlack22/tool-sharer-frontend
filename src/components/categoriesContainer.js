@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { fetchCategoriesAndTools } from '../actions/categoriesAndTools';
+import { connect } from 'react-redux';
 
 class CategoriesContainer extends Component {
 
-    // componentDidMount(){
-
-    // }
+    componentDidMount(){
+        this.props.fetchCategoriesAndTools()
+    }
 
     render() {
         return (
@@ -13,4 +15,10 @@ class CategoriesContainer extends Component {
     }
 }
 
-export default CategoriesContainer;
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchCategoriesAndTools: () => dispatch(fetchCategoriesAndTools())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CategoriesContainer);

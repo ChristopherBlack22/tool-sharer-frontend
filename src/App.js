@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 // import { BrowserRouter as Router, Route } from 'react-router';
 
-import { token } from '../index';
+import { token } from './index';
 
 class App extends Component {
 

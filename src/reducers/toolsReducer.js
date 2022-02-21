@@ -9,7 +9,7 @@ export default function toolsReducer (state = [], action) {
         // Borrow and return tool
 
         default:
-            state;
+            return state;
 
     }
 }

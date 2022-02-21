@@ -10,11 +10,15 @@ export default function currentUserReducer (state = {requestingFromAPI: false}, 
                 requestingFromAPI: false
             };
 
-        case "TOOLS_GET_REQUEST":
+        case "CATEGORIES_AND_TOOLS_GET_REQUEST":
             return {
                 requestingFromAPI: true
             };
         case "ADD_TOOLS":
+            return {
+                requestingFromAPI: false
+        };
+        case "ADD_CATEGORIES":
             return {
                 requestingFromAPI: false
         };
