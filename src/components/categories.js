@@ -15,7 +15,7 @@ class Categories extends Component {
                     return <Category key={category.id} category={category} />
                 });
                 return (
-                    <div>Categories
+                    <div className="categories" >
                         {categoriesCards}
                     </div>
                 );

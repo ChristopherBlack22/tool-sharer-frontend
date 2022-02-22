@@ -4,7 +4,7 @@
 
 export const signupNewUser= (newUserData) => {
     return (dispatch) => {
-        dispatch({type: "USER_POST_REQUEST"}); //sending an action to the reducer to indicate request made
+        dispatch({type: "POSTING_USER_DATA"}); //sending an action to the reducer to indicate request made
 
         fetch("http://localhost:3001/api/v1/signup", {
             method: "POST",
@@ -18,7 +18,7 @@ export const signupNewUser= (newUserData) => {
         .then(jsonData => {
                 if (jsonData.error) {
                     alert(jsonData.error);
-                    dispatch({type: "COMPLETED_WITH_ERROR"});
+                    dispatch({type: "USER_ERROR"});
                 } else {
                     localStorage.setItem("jwt", jsonData.jwt);
                     const user = jsonData.user;
@@ -32,7 +32,7 @@ export const signupNewUser= (newUserData) => {
 
 export const loginUser= (userData) => {
     return (dispatch) => {
-        dispatch({type: "USER_POST_REQUEST"}); //sending an action to the reducer to indicate request made
+        dispatch({type: "POSTING_USER_DATA"}); //sending an action to the reducer to indicate request made
 
         fetch("http://localhost:3001/api/v1/login", {
             method: "POST",
@@ -46,7 +46,7 @@ export const loginUser= (userData) => {
         .then(jsonData => {
             if (jsonData.error) {
                 alert(jsonData.error);
-                dispatch({type: "COMPLETED_WITH_ERROR"});
+                dispatch({type: "USER_ERROR"});
             } else {
                 localStorage.setItem("jwt", jsonData.jwt);
                 const user = jsonData.user;

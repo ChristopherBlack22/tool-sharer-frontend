@@ -1,5 +1,4 @@
 export default function categoriesReducer (state = {categoriesArray: [], fetchingCategories: false}, action) {
-    console.log(action);
     switch (action.type) {
         case "FETCHING_CATEGORIES":
             return {

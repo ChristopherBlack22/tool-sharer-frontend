@@ -8,10 +8,6 @@ import { connect } from 'react-redux';
 
 // import { BrowserRouter as Router, Route } from 'react-router';
 
-// export const token = localStorage.getItem("jwt");
-// import token from './index';
-// let token = localStorage.getItem("jwt");
-// 
 class App extends Component {
 
   render() {

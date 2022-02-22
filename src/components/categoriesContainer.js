@@ -11,7 +11,7 @@ class CategoriesContainer extends Component {
 
     render() {
         return (
-            <div className="categories-container">This is the CategoriesContainer
+            <div className="categories-container">
                 <Categories categories={this.props.categories} fetchingCategories={this.props.fetchingCategories} />
             </div>
         )    
