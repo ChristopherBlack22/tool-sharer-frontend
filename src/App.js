@@ -8,13 +8,15 @@ import { connect } from 'react-redux';
 
 // import { BrowserRouter as Router, Route } from 'react-router';
 
-import { token } from './index';
-
+// export const token = localStorage.getItem("jwt");
+// import token from './index';
+// let token = localStorage.getItem("jwt");
+// 
 class App extends Component {
 
   render() {
     let userLoggedIn;
-    if(token && this.props.currentUserId) {
+    if(localStorage.jwt && this.props.currentUserId) {
         userLoggedIn = true
       } else {
       localStorage.removeItem("jwt"); //ensure jwt hasnt been left from incorrect logout or maliciously added

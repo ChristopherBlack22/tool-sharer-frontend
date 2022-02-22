@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchCategoriesAndTools } from '../actions/categoriesAndTools';
 import { connect } from 'react-redux';
+import Categories from './categories';
 
 class CategoriesContainer extends Component {
 
@@ -10,9 +11,15 @@ class CategoriesContainer extends Component {
 
     render() {
         return (
-            <div>CategoriesContainer</div>
+            <div>This is the CategoriesContainer
+                <Categories categories={this.props.categories} />
+            </div>
         )
     }
+}
+
+const mapStateToProps = state => {
+    return {categories: state.categories.categoriesArray}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -21,4 +28,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CategoriesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);

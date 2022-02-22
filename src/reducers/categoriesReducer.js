@@ -1,9 +1,9 @@
 export default function categoriesReducer (state = [], action) {
-    console.log(`categoriesReducer ${action}`);
+    console.log(action);
     switch (action.type) {
         case "ADD_CATEGORIES":
             return {
-                tools: action.categories
+                categoriesArray: action.categories 
             };
 
         default:

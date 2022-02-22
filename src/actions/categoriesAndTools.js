@@ -1,6 +1,8 @@
-import { token } from '../index';
+// import { token } from '../index';
+
 
 export const fetchCategoriesAndTools = () => {
+    let token = localStorage.getItem("jwt");
     return (dispatch) => {
         dispatch({type: "CATEGORIES_AND_TOOLS_GET_REQUEST"}); //sending an action to the reducer to indicate request made
 
@@ -12,21 +14,17 @@ export const fetchCategoriesAndTools = () => {
         })
         .then(response => response.json())
         .then(jsonData => {
-            //is rendering of errors required?
-                if (jsonData.error) {
-                    alert(jsonData.error);
-                    dispatch({type: "COMPLETED_WITH_ERROR"});
-                } else {
-                    const categories = jsonData.categories;
-                    dispatch({
-                        type: "ADD_CATEGORIES", categories
-                    });
+            const jsonCategoriesArray = jsonData.categories;
+            const categories = JSON.parse(jsonCategoriesArray);
+            dispatch({
+                type: "ADD_CATEGORIES", categories
+            });
 
-                    const tools = jsonData.tools;
-                    dispatch({
-                        type: "ADD_TOOLS", tools
-                    });
-                }
+            const jsonToolsArray = jsonData.tools;
+            const tools = JSON.parse(jsonToolsArray);
+            dispatch({
+                type: "ADD_TOOLS", tools
+            });
         });
     }
 }

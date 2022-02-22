@@ -1,9 +1,9 @@
 export default function toolsReducer (state = [], action) {
-    console.log(`toolsReducer ${action}`);
+    console.log(action);
     switch (action.type) {
         case "ADD_TOOLS":
             return {
-                tools: action.tools
+                toolsArray: action.tools
             };
 
         // Borrow and return tool
