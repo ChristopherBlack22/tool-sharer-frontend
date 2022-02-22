@@ -3,38 +3,23 @@ import Category from './category';
 
 class Categories extends Component {
     render() {
-        return (
-            <div>Categories Component</div>
-        )
-
-
-
-
-
-
-
-
-    //     debugger
-    //     if(this.props.requestingFromAPI) {
-    //         return(
-    //             <div><em>LOADING</em></div>
-    //         )
-    //     } else {
-    //         let categoriesCards;
-    //         if (this.props.categories.length === 0) {
-    //             categoriesCards = "No Categories available"
-    //         } else {
-    //             categoriesCards = this.props.categories.map(category => {
-    //                 return <Category key={category.id} category={category} />
-    //             });
-    //             return (
-    //                 <div>Categories
-    //                     {/* {categoriesCards} */}
-    //                 </div>
-    //             );
-    //         }
-    //     }
-    // }
+        
+            if(this.props.fetchingCategories || this.props.categories.length === 0) {
+                //first condition stops first render, second stops rending when inital state of a blank array is set
+                return(
+                    <div><em>...LOADING...</em></div>
+                )
+            } else {
+                let categoriesCards;
+                categoriesCards = this.props.categories.map(category => {
+                    return <Category key={category.id} category={category} />
+                });
+                return (
+                    <div>Categories
+                        {categoriesCards}
+                    </div>
+                );
+            }
     }
 }
 
