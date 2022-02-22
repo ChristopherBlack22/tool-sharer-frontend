@@ -12,7 +12,7 @@ class CategoriesContainer extends Component {
     render() {
         return (
             <div className="categories-container">This is the CategoriesContainer
-                <Categories categories={this.props.categories} requestingFromAPI={this.props.requestingFromAPI} />
+                <Categories categories={this.props.categories} fetchingCategories={this.props.fetchingCategories} />
             </div>
         )    
     }
@@ -20,8 +20,8 @@ class CategoriesContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        requestingFromAPI: state.status.requestingFromAPI,
-        categories: state.categories.categoriesArray
+        categories: state.categories.categoriesArray,
+        fetchingCategories: state.categories.fetchingCategories
     }
 }
 

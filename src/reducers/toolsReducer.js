@@ -4,11 +4,11 @@ export default function toolsReducer (state = {toolsArray: [], fetchingTools: fa
         case "FETCHING_TOOLS":
             debugger
             return {
-                ...state, fetchingCategories: true
+                ...state, fetchingTools: true
             };
         case "ADD_TOOLS":
             return {
-                toolsArray: action.tools, fetchingCategories: false
+                toolsArray: action.tools, fetchingTools: false
             };
 
         // Borrow and return tool
