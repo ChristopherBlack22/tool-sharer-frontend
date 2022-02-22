@@ -4,7 +4,8 @@
 export const fetchCategoriesAndTools = () => {
     let token = localStorage.getItem("jwt");
     return (dispatch) => {
-        dispatch({type: "CATEGORIES_AND_TOOLS_GET_REQUEST"}); //sending an action to the reducer to indicate request made
+        dispatch({type: "FETCHING_CATEGORIES"}); //sending an action to the reducer to indicate request made
+        dispatch({type: "CATEGORIES_AND_TOOLS_GET_REQUEST"});
 
         fetch("http://localhost:3001/api/v1/categories", {
             method: "GET",

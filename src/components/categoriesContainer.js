@@ -11,15 +11,18 @@ class CategoriesContainer extends Component {
 
     render() {
         return (
-            <div>This is the CategoriesContainer
-                <Categories categories={this.props.categories} />
+            <div className="categories-container">This is the CategoriesContainer
+                <Categories categories={this.props.categories} requestingFromAPI={this.props.requestingFromAPI} />
             </div>
-        )
+        )    
     }
 }
 
 const mapStateToProps = state => {
-    return {categories: state.categories.categoriesArray}
+    return {
+        requestingFromAPI: state.status.requestingFromAPI,
+        categories: state.categories.categoriesArray
+    }
 }
 
 const mapDispatchToProps = dispatch => {
