@@ -8,7 +8,7 @@ class UserFormsContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="user-forms-container" >
                 <SignupForm signupNewUser={this.props.signupNewUser} />
                 <h4><em>or</em></h4>
                 <LoginForm  loginUser={this.props.loginUser} />

@@ -7,7 +7,9 @@ class Categories extends Component {
             if(this.props.fetchingCategories || this.props.categories.length === 0) {
                 //first condition stops first render, second stops rending when inital state of a blank array is set
                 return(
-                    <div><em>...LOADING...</em></div>
+                    <div className="loading" >
+                        <em>...LOADING...</em>
+                    </div>
                 )
             } else {
                 let categoriesCards;
