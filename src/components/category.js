@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import ToolsContainer from './toolsContainer';
+import { Link } from 'react-router-dom';
 
 class Category extends Component {
 
     render() {
+        const {name, image_url} = this.props.category;
         return (
-            <div className="category-card" >
-                <h3>{this.props.category.name}</h3>
-                <img src={this.props.category.image_url} width="120" height="120" />
-                <ToolsContainer categoryId={this.props.category.id} />
+            <div className="category-card">
+                <Link to={`/${name}/tools`} >
+                    <h3>{name}</h3>
+                    <img src={image_url} width="120" height="120" alt={name} />
+                </Link>
             </div>
         )
     }

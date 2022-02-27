@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SignupForm from './signupForm';
-import LoginForm from './loginForm';
+import SignupForm from '../components/signupForm';
+import LoginForm from '../components/loginForm';
 import { signupNewUser, loginUser } from '../actions/users';
 import { connect } from 'react-redux';
 
@@ -17,11 +17,6 @@ class UserFormsContainer extends Component {
     }
 
 }
-
-//is this required?
-const mapStateToProps = state => {
-    return {state: state};
-}
   
 const mapDispatchToProps = dispatch => {
   return {
@@ -30,4 +25,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserFormsContainer);
+export default connect(null, mapDispatchToProps)(UserFormsContainer);
