@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { fetchCategoriesAndTools } from '../actions/categoriesAndTools';
 import { connect } from 'react-redux';
-import Categories from '../components/categories';
-// import TESTCategories from '../components/TESTcategories';
+import CategoriesContainer from './categoriesContainer';
 
 class HomePage extends Component {
 
@@ -13,8 +12,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="home-page">
-          <Categories categories={this.props.categories} fetchingCategories={this.props.fetchingCategories} />
-          {/* <TESTCategories categories={this.props.categories} fetchingCategories={this.props.fetchingCategories} /> */}
+          <CategoriesContainer categories={this.props.categories} fetchingCategories={this.props.fetchingCategories} />
       </div>      
     )
   }

@@ -1,55 +1,30 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import ToolsList from '../components/toolsList';
 
 class ToolsContainer extends Component {
 
-    // let selectedTools;
+    // let filteredTools;
     // if (this.props.match.params) {
     //     const selectedCategory = this.props.match.params.category_name;
-    //     selectedTools = this.props.tools.filter(tool => tool.category.name === selectedCategory);
+    //     filteredTools = this.props.tools.filter(tool => tool.category.name === selectedCategory);
     // } else if (this.props.ownerId) {
-    //     selectedTools = this.props.tools.filter(tool => tool.owner.id === this.props.ownerId);
+    //     filteredTools = this.props.tools.filter(tool => tool.owner.id === this.props.ownerId);
     // } else if (this.props.borrowerId){
-    //     selectedTools = this.props.tools.filter(tool => tool.borrower.id === this.props.borrowerId);
+    //     filteredTools = this.props.tools.filter(tool => tool.borrower.id === this.props.borrowerId);
     // }
-    // return selectedTools;
-
-    selectTools = () => {
-        let selectedTools;
-        const selectedCategory = this.props.category;
-        selectedTools = this.props.tools.filter(tool => tool.category.name === selectedCategory);
-        return selectedTools;
-    }
-
-
-    createToolList = () => {
-        const selectedTools = this.selectTools();
-        const toolList = selectedTools.map(tool => {
-            return (
-                <li>
-                    {tool.name}
-                </li>
-            )
-        });
-        return toolList;
-    }
-
+    // return filteredTools;
 
     render() {
-        const toolList = this.createToolList();
-
+        const category = this.props.category;
+        const filteredTools = this.props.tools.filter(tool => tool.category.name === category);
+      
         return (
             <div className="tools-container">
-                <ul>
-                    {toolList}
-                </ul>   
-            </div>
+                <ToolsList tools={filteredTools} parentUrl={this.props.parentUrl}/>
+            </div>  
         )
-        //move into Tool List component
     }
 
 }
-
 
 export default ToolsContainer;

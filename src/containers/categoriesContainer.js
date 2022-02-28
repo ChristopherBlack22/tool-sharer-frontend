@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Category from './category';
+import Category from '../components/category';
 
-class Categories extends Component {
+class CategoriesContainer extends Component {
     render() {
         
         if(this.props.fetchingCategories || this.props.categories.length === 0) {
@@ -25,4 +25,4 @@ class Categories extends Component {
     }
 }
 
-export default Categories;
+export default CategoriesContainer;

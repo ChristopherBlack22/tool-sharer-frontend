@@ -33,11 +33,8 @@ class App extends Component {
 					<NavBar />
 					<div className="content">
 						<Switch>
-              <Route exact path="/">
-                {userLoggedIn ? <HomePage /> : <UserFormsPage/>}
-              </Route>
+              				<Route exact path="/">{userLoggedIn ? <HomePage /> : <UserFormsPage/>}</Route>
 							<Route path="/profile" component={ ProfilePage } />
-
 							<Route path="/:category_name/tools" component={ ToolsPage } />
 						</Switch>
 					</div>
