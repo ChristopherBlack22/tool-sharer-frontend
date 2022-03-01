@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 
 class ProfilePage extends Component {
   render() {
-    // const url = this.props.match.url;
+    const url = this.props.match.url;
     return (
       <div className="profile-page">
         <h1>Hello {this.props.user.username}!</h1>
         <div>These are the Tools you are sharing (allow delete)</div>
-        {/* <ToolsContainer ownerId={this.props.user.id} tools={this.props.tools} parentUrl={url} /> */}
+        <ToolsContainer ownerId={this.props.user.id} tools={this.props.tools} parentUrl={url} />
         <div>These are the Tools you are borrowing (allow return)</div>       
-        {/* <ToolsContainer borrowerId={this.props.user.id} tools={this.props.tools} parentUrl={url} /> */}
+        <ToolsContainer borrowerId={this.props.user.id} tools={this.props.tools} parentUrl={url} />
         
         <div>Form to add a new tool to share</div>
         

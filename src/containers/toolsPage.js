@@ -12,9 +12,9 @@ class ToolsPage extends Component {
         return (
             <div className="tools-page">
                 <h1>{selectedCategory} Tools to Share</h1>
-                <ToolsContainer category={selectedCategory} tools={this.props.tools} parentUrl={url} />
+                <ToolsContainer category={selectedCategory} tools={this.props.tools} parentUrl={url} currentUserId={this.props.currentUserId} />
                 <Route exact path={url} render={ () => <h3><em>Select Tool to View</em></h3>} />
-                <Route path={`${url}/:tool_id`} render={ (routerProps) => <Tool tools={this.props.tools} {...routerProps} />} />
+                <Route path={`${url}/:tool_id`} render={ (routerProps) => <Tool tools={this.props.tools} currentUserId={this.props.currentUserId} {...routerProps} />} />
             </div>
         )
     }
@@ -22,7 +22,10 @@ class ToolsPage extends Component {
 }
 
 const mapStateToProps = state => {
-    return {tools: state.tools.toolsArray}
+    return {
+        tools: state.tools.toolsArray,
+        currentUserId: state.currentUser.id
+    }
 }
 
 export default connect(mapStateToProps)(ToolsPage);
