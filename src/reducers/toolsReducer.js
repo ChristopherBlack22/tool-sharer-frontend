@@ -14,16 +14,16 @@ export default function toolsReducer (state = {toolsArray: [], fetchingTools: fa
                 ...state, fetchingTools: true
             };
         case "UPDATE_TOOL":
-            debugger
+            const newToolsArray = state.toolsArray.map(tool => {
+                if (tool.id === action.tool.id) { 
+                    return action.tool
+                } else {
+                    return tool
+                }
+            });
+
             return {
-                
-                // b = [...state.toolsArray]
-                // b.map(t => {if(t.id === action.tool.id) {return {...t, id: action.tool.id}} else {return t}})
-                // ISSUE HERE THAT JS DOESNT READ NULL, SO NEED TO CHECK BORROWER EXISTS BEFORE TRYING TO SET ITS ID
-
-
-
-
+                toolsArray: newToolsArray, fetchingTools: false
             };        
 
         default:
