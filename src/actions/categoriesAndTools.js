@@ -29,3 +29,27 @@ export const fetchCategoriesAndTools = () => {
         });
     }
 }
+
+export const updateTool = (toolData) => {
+    let token = localStorage.getItem("jwt");
+    return (dispatch) => {
+        dispatch({type: "PATCHING_TOOL_DATA"});
+
+        fetch(`http://localhost:3001/api/v1/tools/${toolData.tool.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(toolData)
+        })
+        .then(response => response.json())
+        .then(jsonData => {
+            const tool = JSON.parse(jsonData.tool);
+            dispatch({
+                type: "UPDATE_TOOL", tool
+            });
+        });
+    }    
+}
