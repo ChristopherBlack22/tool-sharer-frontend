@@ -53,3 +53,26 @@ export const updateTool = (toolData) => {
         });
     }    
 }
+
+export const createNewTool = (newToolData) => {
+    let token = localStorage.getItem("jwt");
+    return (dispatch) => {
+        dispatch({type: "POSTING_TOOL_DATA"});
+        
+        fetch("http://localhost:3001/api/v1/tools", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(newToolData)
+        })
+        .then(jsonData => {
+            const tool = JSON.parse(jsonData.tool);
+            dispatch({
+                type: "ADD_NEW_TOOL", tool
+            });
+        });
+    }
+}

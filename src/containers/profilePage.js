@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import ToolsContainer from './toolsContainer';
-import Tool from '../components/tool';
-import { Route } from 'react-router-dom';
+// import ToolsContainer from './toolsContainer';
+// import Tool from '../components/tool';
+import NewToolForm from '../components/newToolForm';
+import { createNewTool } from '../actions/categoriesAndTools';
+// import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class ProfilePage extends Component {
@@ -9,13 +11,13 @@ class ProfilePage extends Component {
     const url = this.props.match.url;
     return (
       <div className="profile-page">
-        <h1>Hello {this.props.user.username}!</h1>
+        <h1>Hello {this.props.currentUser.username}!</h1>
         <div>These are the Tools you are sharing (allow delete)</div>
-        <ToolsContainer ownerId={this.props.user.id} tools={this.props.tools} parentUrl={url} />
+        {/* <ToolsContainer ownerId={this.props.user.id} tools={this.props.tools} parentUrl={url} /> */}
         <div>These are the Tools you are borrowing (allow return)</div>       
-        <ToolsContainer borrowerId={this.props.user.id} tools={this.props.tools} parentUrl={url} />
+        {/* <ToolsContainer borrowerId={this.props.user.id} tools={this.props.tools} parentUrl={url} /> */}
         
-        <div>Form to add a new tool to share</div>
+        <NewToolForm currentUserId={this.props.currentUser.id} categories={this.props.categories} createNewTool={this.props.createNewTool}/>
         
         {/* <Route exact path={url} render={ () => <h3><em>Select Tool to View</em></h3>} />
         <Route path={`${url}/:tool_id`} render={ (routerProps) => <Tool tools={this.props.tools} {...routerProps} />} /> */}
@@ -27,9 +29,16 @@ class ProfilePage extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.currentUser,
-    tools: state.tools.toolsArray
+    currentUser: state.currentUser,
+    tools: state.tools.toolsArray,
+    categories: state.categories.categoriesArray
   }
 }
 
-export default connect(mapStateToProps)(ProfilePage);
+const mapDispatchToProps = dispatch => {
+  return {
+    createNewTool: (newToolData) => dispatch(createNewTool(newToolData))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
