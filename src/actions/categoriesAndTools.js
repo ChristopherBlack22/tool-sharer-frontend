@@ -68,11 +68,30 @@ export const createNewTool = (newToolData) => {
             },
             body: JSON.stringify(newToolData)
         })
+        .then(response => response.json())
         .then(jsonData => {
-            const tool = JSON.parse(jsonData.tool);
-            dispatch({
-                type: "ADD_NEW_TOOL", tool
-            });
+            if (jsonData.error) {
+                alert(jsonData.error);
+                dispatch({type: "TOOL_ERROR"});
+            } else {
+                const tool = JSON.parse(jsonData.tool);
+                alert(`Your ${tool.name} has been shared and is now available for others to borrow`);
+                dispatch({
+                    type: "ADD_NEW_TOOL", tool
+                });
+            }
         });
     }
 }
+
+// export const deleteTool = (toolId) -> {
+//     let token = localStorage.getItem("jwt");
+//     return (dispatch) => {
+//         dispatch({type: "POSTING_TOOL_DATA"});
+
+
+//         dispatch({
+//             type: "DELETE_TOOL", tools
+//         });
+
+// }

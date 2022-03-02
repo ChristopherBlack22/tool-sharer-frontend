@@ -35,6 +35,16 @@ export default function toolsReducer (state = {toolsArray: [], fetchingTools: fa
             return {
                 toolsArray: newToolsArray, fetchingTools: false
             };
+        case "TOOL_ERROR":
+            return {
+                ...state, fetchingTools: false
+        };
+
+        // case "DELETE_TOOL":
+        //     //request sent to server, response will be the new array with a tool removed, toolArray just requires overwriting
+        //     return {
+        //         toolsArray: action.tools, fetchingTools: false
+        //     };
 
         default:
             return state;
