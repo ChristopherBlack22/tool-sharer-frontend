@@ -24,11 +24,11 @@ class UpdateButton extends Component {
         // debugger
         if(this.props.tool.borrower && this.props.tool.borrower.id === this.props.currentUserId) {
             return (
-                <button onClick={this.handleOnClick} >Return Tool</button>
+                <button className="update-button" onClick={this.handleOnClick} >Return Tool</button>
             )
         } else if(!this.props.tool.borrower && this.props.tool.owner.id !== this.props.currentUserId) {
             return (
-                <button onClick={this.handleOnClick} >Borrow Tool</button>
+                <button className="update-button" onClick={this.handleOnClick} >Borrow Tool</button>
             )
         } else {
             return null

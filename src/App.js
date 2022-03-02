@@ -10,7 +10,7 @@ import HomePage from './containers/homePage';
 import ProfilePage from './containers/profilePage';
 import ToolsPage from './containers/toolsPage';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 class App extends Component {
 
@@ -34,9 +34,15 @@ class App extends Component {
 					<br/>					
 					<div className="content">
 						<Switch>
-              				<Route exact path="/">{userLoggedIn ? <HomePage /> : <UserFormsPage/>}</Route>
-							<Route path="/profile" component={ ProfilePage } />
-							<Route path="/:category_name/tools" component={ ToolsPage } />
+              				<Route exact path="/">
+								{userLoggedIn ? <HomePage /> : <UserFormsPage/>}
+							</Route>
+							<Route path="/profile">
+								{userLoggedIn ? <ProfilePage /> : <Redirect to="/"/>}
+							</Route>
+							<Route path="/:category_name/tools">
+								{userLoggedIn ? <ToolsPage /> : <Redirect to="/"/>}
+							</Route>
 						</Switch>
 					</div>
 				</div>
