@@ -14,8 +14,11 @@ export default function currentUserReducer (state = {id: null, username: null, e
                 id: user.id, username: user.username, email: user.email, postingUserData: false
             };
 
-        // case "LOGOUT_USER":
-        //     return {id: null, username: null, email: null};
+        case "LOGOUT_USER":
+            localStorage.removeItem("jwt");
+            return {
+                id: null, username: null, email: null, postingUserData: false
+            };
         
         default:
             return state;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import LogoutButton from './logoutButton';
 
 const NavBar = () => {
 
@@ -27,7 +28,7 @@ const NavBar = () => {
                 style={ link }
                 activeStyle={ activeLink }
             >Profile</NavLink>
-            <p>Logout goes here</p>
+            <LogoutButton/>
         </div>
     );
 }

@@ -30,7 +30,8 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<h1>Tool Sharer App</h1>
-					<NavBar />
+					{userLoggedIn ? <NavBar /> : null}
+					<br/>					
 					<div className="content">
 						<Switch>
               				<Route exact path="/">{userLoggedIn ? <HomePage /> : <UserFormsPage/>}</Route>

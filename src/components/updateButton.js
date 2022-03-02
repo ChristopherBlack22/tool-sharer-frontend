@@ -23,7 +23,6 @@ class UpdateButton extends Component {
         // let {tool, currentUserId} = this.state;
         // debugger
         if(this.props.tool.borrower && this.props.tool.borrower.id === this.props.currentUserId) {
-            // debugger
             return (
                 <button onClick={this.handleOnClick} >Return Tool</button>
             )

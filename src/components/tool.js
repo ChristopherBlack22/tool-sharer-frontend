@@ -9,11 +9,6 @@ class Tool extends Component {
         return tool;
     }
 
-    // handleOnClick = () => {
-    //     const toolId = this.props.match.params.tool_id;
-    //     this.props.updateTool({tool})
-    // }
-
     render() {
         
         const tool = this.findTool();
@@ -26,8 +21,6 @@ class Tool extends Component {
                 {tool.owner.id === this.props.currentUserId ? <p>Owner: You</p> : <p>Owner: {tool.owner.username}</p>}
                 {tool.borrower ? <p>Currently Unavailable</p> : <p>Currently Available</p> }
                 {(tool.borrower && tool.borrower.id === this.props.currentUserId) ? <p><small>This Tool is with You</small></p> : null }
-                {/* {(tool.borrower && tool.borrower.id === this.props.currentUserId) ? <div><small>You are borrowing this Tool</small><br/><br/><button onClick={this.handleOnClick} >Return Tool</button></div> : null } */}
-                {/* {(!tool.borrower && tool.owner.id !== this.props.currentUserId) ? <button onClick={this.handleOnClick} >Borrow Tool</button> : null } */}
                 <UpdateButton tool={tool} currentUserId={this.props.currentUserId} />
             </div>
         )
