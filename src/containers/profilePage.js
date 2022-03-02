@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 class ProfilePage extends Component {
   render() {
+    debugger
     const url = this.props.match.url;
     return (
       <div className="profile-page">
