@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import ToolsContainer from './toolsContainer';
 import Tool from '../components/tool';
-import { Route } from 'react-router-dom';
+import UserLoggedIn from '../helpers/userLoggedIn';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class ToolsPage extends Component {
 
     render() {
-        const selectedCategory = this.props.match.params.category_name;
-        const url = this.props.match.url;
-        return (
-            <div className="tools-page">
-                <h1>{selectedCategory} Tools to Share</h1>
-                <ToolsContainer category={selectedCategory} tools={this.props.tools} parentUrl={url} currentUserId={this.props.currentUserId} />
-                <Route exact path={url} render={ () => <h3><em>Select Tool to View</em></h3>} />
-                <Route path={`${url}/:tool_id`} render={ (routerProps) => <Tool tools={this.props.tools} currentUserId={this.props.currentUserId} {...routerProps} />} />
-            </div>
-        )
+        if (UserLoggedIn(this.props.currentUserId)) {
+            const selectedCategory = this.props.match.params.category_name;
+            const url = this.props.match.url;
+            return (
+                <div className="tools-page">
+                    <h1>{selectedCategory} Tools to Share</h1>
+                    <ToolsContainer category={selectedCategory} tools={this.props.tools} parentUrl={url} currentUserId={this.props.currentUserId} />
+                    <Route exact path={url} render={ () => <h3><em>Select Tool to View</em></h3>} />
+                    <Route path={`${url}/:tool_id`} render={ (routerProps) => <Tool tools={this.props.tools} currentUserId={this.props.currentUserId} {...routerProps} />} />
+                </div>
+            )
+        } else {
+            return (
+                <Redirect to="/"/>
+            )
+        }
     }
     
 }

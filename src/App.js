@@ -12,17 +12,31 @@ import ToolsPage from './containers/toolsPage';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import UserLoggedIn from './helpers/userLoggedIn';
+
 class App extends Component {
 
-	render(){
+	// userLoggedIn = () => {
+	// 	if(localStorage.jwt && this.props.currentUserId) {
+	// 		return true
+	// 	} else {
+	// 		//ensure jwt hasnt been left from incorrect logout or maliciously added
+	// 		localStorage.removeItem("jwt");
+	// 		return false
+	// 	}
+	// }
 
-    let userLoggedIn;
-    if(localStorage.jwt && this.props.currentUserId) {
-        userLoggedIn = true
-      } else {
-      localStorage.removeItem("jwt"); //ensure jwt hasnt been left from incorrect logout or maliciously added
-      userLoggedIn = false
-    }
+	render(){
+		
+    // let userLoggedIn;
+    // if(localStorage.jwt && this.props.currentUserId) {
+    //     userLoggedIn = true
+    //   } else {
+    //   localStorage.removeItem("jwt"); //ensure jwt hasnt been left from incorrect logout or maliciously added
+    //   userLoggedIn = false
+    // }
+
+	
 
 
     
@@ -30,11 +44,13 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<h1>Tool Sharer App</h1>
-					{userLoggedIn ? <NavBar /> : null}
+					{UserLoggedIn(this.props.currentUserId) ? <NavBar /> : null}
+					{/* {userLoggedIn ? <NavBar /> : null} */}
 					<br/>					
 					<div className="content">
 						<Switch>
-              				<Route exact path="/">{userLoggedIn ? <HomePage /> : <UserFormsPage/>}</Route>
+							<Route exact path="/">{UserLoggedIn(this.props.currentUserId) ? <HomePage /> : <UserFormsPage/>}</Route>
+              				{/* <Route exact path="/">{userLoggedIn ? <HomePage /> : <UserFormsPage/>}</Route> */}
 							<Route path="/profile" component={ ProfilePage } />
 							<Route path="/:category_name/tools" component={ ToolsPage } />
 						</Switch>
