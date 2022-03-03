@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-// class Category extends Component {
 const Category = ({category}) => {
 
     const {name, image_url} = category;
