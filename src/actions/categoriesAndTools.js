@@ -75,7 +75,7 @@ export const createNewTool = (newToolData) => {
                 dispatch({type: "TOOL_ERROR"});
             } else {
                 const tool = JSON.parse(jsonData.tool);
-                alert(`Your ${tool.name} has been shared and is now available for others to borrow`);
+                alert(`Your ${tool.name} has been shared and is now available for others to borrow.`);
                 dispatch({
                     type: "ADD_NEW_TOOL", tool
                 });
@@ -83,15 +83,26 @@ export const createNewTool = (newToolData) => {
         });
     }
 }
+////
+export const deleteTool = (toolId) => {
+    let token = localStorage.getItem("jwt");
+    return (dispatch) => {
+        dispatch({type: "DELETING_TOOL"});
 
-// export const deleteTool = (toolId) -> {
-//     let token = localStorage.getItem("jwt");
-//     return (dispatch) => {
-//         dispatch({type: "POSTING_TOOL_DATA"});
-
-
-//         dispatch({
-//             type: "DELETE_TOOL", tools
-//         });
-
-// }
+        fetch(`http://localhost:3001/api/v1/tools/${toolId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        .then(response => response.json())
+        .then(jsonData => {
+            alert("Tool is no longer being shared.");
+            const jsonToolsArray = jsonData.tools;
+            const tools = JSON.parse(jsonToolsArray);
+            dispatch({
+                type: "DELETE_TOOL", tools
+            });
+        });
+   }
+}

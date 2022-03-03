@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UpdateButton from './updateButton';
+import DeleteButton from './deleteButton';
 
 class Tool extends Component {
 
@@ -22,6 +23,7 @@ class Tool extends Component {
                 {tool.borrower ? <p>Currently Unavailable</p> : <p>Currently Available</p> }
                 {(tool.borrower && tool.borrower.id === this.props.currentUserId) ? <p><small>This Tool is with You</small></p> : null }
                 <UpdateButton tool={tool} currentUserId={this.props.currentUserId} />
+                <DeleteButton tool={tool} currentUserId={this.props.currentUserId} />
             </div>
         )
     }
