@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Category from '../components/category';
 
-class CategoriesContainer extends Component {
-    render() {
-        
-        if(this.props.fetchingCategories || this.props.categories.length === 0) {
-            //first condition stops first render, second stops rending when inital state of a blank array is set
-            return(
-                <div className="loading" >
-                    <em>...LOADING...</em>
-                </div>
-            )
-        } else {
-            let categoriesCards;
-            categoriesCards = this.props.categories.map(category => {
-                return <Category key={category.id} category={category} />
-            });
-            return (
-                <div className="categories" >
-                    {categoriesCards}
-                </div>
-            );
-        }
+const CategoriesContainer = ({fetchingCategories, categories}) => {
+
+    //stop rendering when categories is initally an empty array or before the fetch is completed. 
+    if(fetchingCategories || categories.length === 0) {
+        return(
+            <div className="loading" >
+                <em>...LOADING...</em>
+            </div>
+        )
+    } else {
+        let categoriesCards;
+        categoriesCards = categories.map(category => {
+            return <Category key={category.id} category={category} />
+        });
+        return (
+            <div className="categories" >
+                {categoriesCards}
+            </div>
+        );
     }
+    
 }
 
 export default CategoriesContainer;
