@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-class LogoutButton extends Component {
+const LogoutButton = ({logoutUser}) => {
+    const history = useHistory();
 
-    handleOnClick = () => {
-        this.props.logoutUser()
+    const handleOnClick = () => {
+        logoutUser();
+        history.push("/")
     }
 
-    render() {
-        return (
-            <button className="logout-button" onClick={this.handleOnClick} >
-                Logout
-            </button>
-        )
-    }
+    return (
+        <button className="logout-button" onClick={handleOnClick} >
+            Logout
+        </button>
+    ) 
 }
 
 const mapDispatchToProps = dispatch => {
