@@ -9,9 +9,6 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/rootReducer';
 
-// export let token = localStorage.getItem("jwt");
-
-// const store = createStore(userReducer, applyMiddleware(thunk));
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
