@@ -6,7 +6,7 @@ import { createNewTool } from '../actions/categoriesAndTools';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import UserLoggedIn from '../helpers/userLoggedIn';
+import { UserLoggedIn } from '../helpers/helperFunctions';
 
 class ProfilePage extends Component {
   render() {

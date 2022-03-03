@@ -1,12 +1,11 @@
-// const token = localStorage.getItem("jwt");
-// Authorization: `Bearer ${token}`
-// use for GET requests once logged in
+import { ServerURL } from '../helpers/helperFunctions';
+const serverURL = ServerURL();
 
 export const signupNewUser= (newUserData) => {
     return (dispatch) => {
         dispatch({type: "POSTING_USER_DATA"}); //sending an action to the reducer to indicate request made
 
-        fetch("http://localhost:3001/api/v1/signup", {
+        fetch(`${serverURL}/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -34,7 +33,7 @@ export const loginUser= (userData) => {
     return (dispatch) => {
         dispatch({type: "POSTING_USER_DATA"}); //sending an action to the reducer to indicate request made
 
-        fetch("http://localhost:3001/api/v1/login", {
+        fetch(`${serverURL}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

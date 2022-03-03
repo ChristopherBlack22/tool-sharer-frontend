@@ -1,13 +1,14 @@
-// import { token } from '../index';
-
+import { ServerURL, LocalStorageJWT } from '../helpers/helperFunctions';
+const serverURL = ServerURL();
+const token = LocalStorageJWT();
 
 export const fetchCategoriesAndTools = () => {
-    let token = localStorage.getItem("jwt");
+    // let token = localStorage.getItem("jwt");
     return (dispatch) => {
         dispatch({type: "FETCHING_CATEGORIES"}); //sending an action to the reducer to indicate request made
         dispatch({type: "FETCHING_TOOLS"});
 
-        fetch("http://localhost:3001/api/v1/categories", {
+        fetch(`${serverURL}/categories`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -31,11 +32,11 @@ export const fetchCategoriesAndTools = () => {
 }
 
 export const updateTool = (toolData) => {
-    let token = localStorage.getItem("jwt");
+    // let token = localStorage.getItem("jwt");
     return (dispatch) => {
         dispatch({type: "PATCHING_TOOL_DATA"});
 
-        fetch(`http://localhost:3001/api/v1/tools/${toolData.tool.id}`, {
+        fetch(`${serverURL}/tools/${toolData.tool.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -55,11 +56,11 @@ export const updateTool = (toolData) => {
 }
 
 export const createNewTool = (newToolData) => {
-    let token = localStorage.getItem("jwt");
+    // let token = localStorage.getItem("jwt");
     return (dispatch) => {
         dispatch({type: "POSTING_TOOL_DATA"});
         
-        fetch("http://localhost:3001/api/v1/tools", {
+        fetch(`${serverURL}/tools`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -83,13 +84,13 @@ export const createNewTool = (newToolData) => {
         });
     }
 }
-////
+
 export const deleteTool = (toolId) => {
-    let token = localStorage.getItem("jwt");
+    // let token = localStorage.getItem("jwt");
     return (dispatch) => {
         dispatch({type: "DELETING_TOOL"});
 
-        fetch(`http://localhost:3001/api/v1/tools/${toolId}`, {
+        fetch(`${serverURL}/tools/${toolId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,

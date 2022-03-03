@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ToolsContainer from './toolsContainer';
 import Tool from '../components/tool';
-import UserLoggedIn from '../helpers/userLoggedIn';
+import { UserLoggedIn } from '../helpers/helperFunctions';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
