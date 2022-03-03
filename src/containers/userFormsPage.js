@@ -1,22 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SignupForm from '../components/signupForm';
 import LoginForm from '../components/loginForm';
 import { signupNewUser, loginUser } from '../actions/users';
 import { connect } from 'react-redux';
-
-// class UserFormsContainer extends Component {
-
-//     render() {
-//         return (
-//             <div className="user-forms-container" >
-//                 <SignupForm signupNewUser={this.props.signupNewUser} />
-//                 <h4><em>or</em></h4>
-//                 <LoginForm  loginUser={this.props.loginUser} />
-//             </div>
-//         )
-//     }
-
-// }
 
 const UserFormsContainer = ({signupNewUser, loginUser}) => {
 
