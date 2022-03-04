@@ -11,7 +11,7 @@ const ToolsList = ({tools, parentUrl}) => {
             availability = <span className="unavailable">Available</span>;
         }
         return(
-            <li key={tool.id} className="tool-list-item">
+            <li key={tool.id} className="tools-list-item">
                 <Link key={tool.id} to={`${parentUrl}/${tool.id}`}>
                     {tool.name} - {availability}
                 </Link>
