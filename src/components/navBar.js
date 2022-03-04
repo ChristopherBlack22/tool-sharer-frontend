@@ -15,7 +15,7 @@ const NavBar = () => {
     
     const activeLink = {
         background: "yellow",
-        color: "black"
+        color: "black",
     };
     
     return (
