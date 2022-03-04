@@ -25,7 +25,6 @@ class NewToolForm extends Component {
             category.name === this.state.tool.category
         );
         //add category_id and owner_id to the new Tool
-        debugger
         let newToolData = {
             ...this.state.tool,
             category_id: selectedCategory.id,

@@ -3,12 +3,14 @@ import { deleteTool } from '../actions/categoriesAndTools';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const DeleteButton = ({tool, currentUserId, deleteTool}) => {
+const DeleteButton = ({tool, currentUserId, parentUrl, deleteTool}) => {
     const history = useHistory();
-
+// debugger
     const handleOnClick = () => {
         deleteTool(tool.id);
-        history.push(`/${tool.category.name}/tools`)
+        if(parentUrl !== "/profile") {
+            history.push(`/${tool.category.name}/tools`)
+        }
     }
 
     if (tool.owner.id === currentUserId) {

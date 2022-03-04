@@ -10,7 +10,7 @@ const ProfileToolsList = (props) => {
             <li key={tool.id} className="profile-tools-list-item">
                 {tool.name}
                 <UpdateButton tool={tool} currentUserId={props.currentUserId} />
-                <DeleteButton tool={tool} currentUserId={props.currentUserId} />
+                <DeleteButton tool={tool} currentUserId={props.currentUserId} parentUrl={props.parentUrl} />
             </li>
         )
     })
