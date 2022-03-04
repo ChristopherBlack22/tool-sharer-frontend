@@ -3,7 +3,7 @@ const serverURL = ServerURL();
 
 export const signupNewUser= (newUserData) => {
     return (dispatch) => {
-        dispatch({type: "POSTING_USER_DATA"}); //sending an action to the reducer to indicate request made
+        dispatch({type: "POSTING_USER_DATA"}); //Sending an action to the reducer to indicate request made
 
         fetch(`${serverURL}/signup`, {
             method: "POST",
@@ -31,7 +31,7 @@ export const signupNewUser= (newUserData) => {
 
 export const loginUser= (userData) => {
     return (dispatch) => {
-        dispatch({type: "POSTING_USER_DATA"}); //sending an action to the reducer to indicate request made
+        dispatch({type: "POSTING_USER_DATA"}); //Sending an action to the reducer to indicate request made
 
         fetch(`${serverURL}/login`, {
             method: "POST",

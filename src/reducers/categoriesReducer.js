@@ -8,9 +8,7 @@ export default function categoriesReducer (state = {categoriesArray: [], fetchin
             return {
                 categoriesArray: action.categories, fetchingCategories: false 
             };
-
         default:
             return state;
-
     }
 }

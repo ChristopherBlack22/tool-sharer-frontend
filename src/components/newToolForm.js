@@ -51,7 +51,7 @@ class NewToolForm extends Component {
 
         return (
             <div className="newToolForm" >
-                <h3>Add a Tool to Share</h3>
+                <h3>Add another Tool to Share</h3>
                 <form onSubmit={this.handleOnSubmit}>
                     <select name="category" placeholder="Select Category" value={this.state.category} onChange={this.handleOnChange}>
                         <option value="" disabled selected hidden>Select Category</option>

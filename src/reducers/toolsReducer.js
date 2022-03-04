@@ -52,6 +52,5 @@ export default function toolsReducer (state = {toolsArray: [], fetchingTools: fa
 
         default:
             return state;
-
     }
 }

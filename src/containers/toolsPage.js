@@ -13,7 +13,7 @@ const ToolsPage = ({match, tools, currentUserId}) => {
         return (
             <div className="tools-page">
                 <h1>{selectedCategory} Tools to Share</h1>
-                <ToolsContainer category={selectedCategory} tools={tools} parentUrl={url} currentUserId={currentUserId} />
+                <ToolsContainer category={selectedCategory} tools={tools} parentUrl={url} />
                 <Route exact path={url} render={ () => <h3><em>Select Tool to View</em></h3>} />
                 <Route path={`${url}/:tool_id`} render={ (routerProps) => <Tool tools={tools} currentUserId={currentUserId} {...routerProps} />} />
             </div>

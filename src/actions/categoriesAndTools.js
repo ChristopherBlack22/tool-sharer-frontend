@@ -3,10 +3,9 @@ const serverURL = ServerURL();
 const token = LocalStorageJWT();
 
 export const fetchCategoriesAndTools = () => {
-    // let token = localStorage.getItem("jwt");
     return (dispatch) => {
-        dispatch({type: "FETCHING_CATEGORIES"}); //sending an action to the reducer to indicate request made
-        dispatch({type: "FETCHING_TOOLS"});
+        dispatch({type: "FETCHING_CATEGORIES"}); //Sending actions to the reducer to indicate request made
+        dispatch({type: "FETCHING_TOOLS"}); //Both Categories and Tools are being fetched in the same request but notifying separate reducers
 
         fetch(`${serverURL}/categories`, {
             method: "GET",
@@ -16,12 +15,13 @@ export const fetchCategoriesAndTools = () => {
         })
         .then(response => response.json())
         .then(jsonData => {
+            //dealing with the returned Categories
             const jsonCategoriesArray = jsonData.categories;
             const categories = JSON.parse(jsonCategoriesArray);
             dispatch({
                 type: "ADD_CATEGORIES", categories
             });
-
+            //dealing with the returned Tools
             const jsonToolsArray = jsonData.tools;
             const tools = JSON.parse(jsonToolsArray);
             dispatch({
@@ -32,7 +32,6 @@ export const fetchCategoriesAndTools = () => {
 }
 
 export const updateTool = (toolData) => {
-    // let token = localStorage.getItem("jwt");
     return (dispatch) => {
         dispatch({type: "PATCHING_TOOL_DATA"});
 
@@ -56,7 +55,6 @@ export const updateTool = (toolData) => {
 }
 
 export const createNewTool = (newToolData) => {
-    // let token = localStorage.getItem("jwt");
     return (dispatch) => {
         dispatch({type: "POSTING_TOOL_DATA"});
         
@@ -86,7 +84,6 @@ export const createNewTool = (newToolData) => {
 }
 
 export const deleteTool = (toolId) => {
-    // let token = localStorage.getItem("jwt");
     return (dispatch) => {
         dispatch({type: "DELETING_TOOL"});
 
