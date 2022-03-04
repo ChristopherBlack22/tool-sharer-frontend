@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ToolsContainer from './toolsContainer';
 import NewToolForm from '../components/newToolForm';
 import { UserLoggedIn } from '../helpers/helperFunctions';
