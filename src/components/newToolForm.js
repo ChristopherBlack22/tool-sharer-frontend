@@ -1,4 +1,4 @@
-import react, { Component } from 'react';
+import React, { Component } from 'react';
 
 class NewToolForm extends Component {
 
@@ -20,12 +20,12 @@ class NewToolForm extends Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        // debugger
         //find the Category that matches the selected Category name
         const selectedCategory = this.props.categories.find(category =>
             category.name === this.state.tool.category
         );
         //add category_id and owner_id to the new Tool
+        debugger
         let newToolData = {
             ...this.state.tool,
             category_id: selectedCategory.id,
@@ -33,9 +33,7 @@ class NewToolForm extends Component {
         }
         //remove the category property
         delete newToolData.category;
-
         this.props.createNewTool({tool: newToolData});
-
         this.setState({
             tool: {
                 name: "",
