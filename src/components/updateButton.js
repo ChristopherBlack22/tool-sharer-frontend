@@ -1,38 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { updateTool } from '../actions/categoriesAndTools';
 import { connect } from 'react-redux';
 
-class UpdateButton extends Component {
+const UpdateButton = ({tool, currentUserId, updateTool}) => {
 
-    handleOnClick = () => {
+    const handleOnClick = () => {
         let newBorrowerId;
-        if(this.props.tool.borrower) {
+        //toggle between null and currentUserId
+        if(tool.borrower) {
             newBorrowerId = null
         } else {
-            newBorrowerId = this.props.currentUserId
+            newBorrowerId = currentUserId
         }
-        this.props.updateTool({
+        updateTool({
             tool: {
-                id: this.props.tool.id,
+                id: tool.id,
                 borrower_id: newBorrowerId
             }
-        })
+        });
     }
 
-    render() {
-        // let {tool, currentUserId} = this.state;
-        // debugger
-        if(this.props.tool.borrower && this.props.tool.borrower.id === this.props.currentUserId) {
-            return (
-                <button className="update-button" onClick={this.handleOnClick} >Return Tool</button>
-            )
-        } else if(!this.props.tool.borrower && this.props.tool.owner.id !== this.props.currentUserId) {
-            return (
-                <button className="update-button" onClick={this.handleOnClick} >Borrow Tool</button>
-            )
-        } else {
-            return null
-        }
+    if(tool.borrower && tool.borrower.id === currentUserId) {
+        return (
+            <button className="update-button" onClick={handleOnClick} >Return Tool</button>
+        )
+    } else if(!tool.borrower && tool.owner.id !== currentUserId) {
+        return (
+            <button className="update-button" onClick={handleOnClick} >Borrow Tool</button>
+        )
+    } else {
+        return null
     }
 
 }
