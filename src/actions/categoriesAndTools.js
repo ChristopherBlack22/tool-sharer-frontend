@@ -1,6 +1,5 @@
 import { ServerURL, LocalStorageJWT } from '../helpers/helperFunctions';
 const serverURL = ServerURL();
-const token = LocalStorageJWT();
 
 export const fetchCategoriesAndTools = () => {
     return (dispatch) => {
@@ -10,7 +9,7 @@ export const fetchCategoriesAndTools = () => {
         fetch(`${serverURL}/categories`, {
             method: "GET",
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${LocalStorageJWT()}`,
             }
         })
         .then(response => response.json())
@@ -40,7 +39,7 @@ export const updateTool = (toolData) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${LocalStorageJWT()}`
             },
             body: JSON.stringify(toolData)
         })
@@ -63,7 +62,7 @@ export const createNewTool = (newToolData) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${LocalStorageJWT()}`
             },
             body: JSON.stringify(newToolData)
         })
@@ -90,7 +89,7 @@ export const deleteTool = (toolId) => {
         fetch(`${serverURL}/tools/${toolId}`, {
             method: "DELETE",
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${LocalStorageJWT()}`,
             }
         })
         .then(response => response.json())
