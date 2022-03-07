@@ -12,7 +12,7 @@ const ProfilePage = ({match, currentUser, tools, categories, createNewTool}) => 
     const url = match.url;
       return (
         <div className="profile-page">
-          <h1>Hello {currentUser.username}!</h1>
+          <h1 className="welcome">Hello {currentUser.username}!</h1>
           <h3>Here are the Tools you are currently borrowing:</h3>       
           <ToolsContainer borrowerId={currentUser.id} tools={tools} parentUrl={url} />
 

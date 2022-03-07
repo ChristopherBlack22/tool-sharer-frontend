@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 const DeleteButton = ({tool, currentUserId, parentUrl, deleteTool}) => {
     const history = useHistory();
-// debugger
     const handleOnClick = () => {
         deleteTool(tool.id);
         if(parentUrl !== "/profile") {

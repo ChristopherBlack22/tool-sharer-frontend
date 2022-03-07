@@ -9,7 +9,7 @@ const UserFormsContainer = ({signupNewUser, loginUser}) => {
   return (
     <div className="user-forms-container" >
         <SignupForm signupNewUser={signupNewUser} />
-        <h4><em>or</em></h4>
+        <h3><em>or</em></h3>
         <LoginForm  loginUser={loginUser} />
     </div>
   )

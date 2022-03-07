@@ -11,7 +11,7 @@ const Tool = ({match, tools, currentUserId}) => {
             <p>{tool.description}</p>
             <img src={tool.image_url} alt={tool.name} width="280" />
             {tool.owner.id === currentUserId ? <p>Owner: You</p> : <p>Owner: {tool.owner.username}</p>}
-            {tool.borrower ? <p>Currently Unavailable</p> : <p>Currently Available</p> }
+            {tool.borrower ? <p className="unavailable">Currently Unavailable</p> : <p className="available">Currently Available</p> }
             {(tool.borrower && tool.borrower.id === currentUserId) ? <p><small>This Tool is with You</small></p> : null }
             <UpdateButton tool={tool} currentUserId={currentUserId} />
             <DeleteButton tool={tool} currentUserId={currentUserId} />

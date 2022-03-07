@@ -6,9 +6,9 @@ const ToolsList = ({tools, parentUrl}) => {
     const toolList = tools.map(tool => {
         let availability;
         if(tool.borrower) {
-            availability = <span className="available">Unavailable</span>;
+            availability = <span className="unavailable">Unavailable</span>;
         } else {
-            availability = <span className="unavailable">Available</span>;
+            availability = <span className="available">Available</span>;
         }
         return(
             <li key={tool.id} className="tools-list-item">

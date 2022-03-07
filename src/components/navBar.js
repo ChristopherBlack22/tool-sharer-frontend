@@ -5,17 +5,19 @@ import LogoutButton from './logoutButton';
 const NavBar = () => {
 
     const link = {
+        position: "relative",
+        top: "2px",
         width: "100px",
-        padding: "12px",
-        margin: "0 6px 6px",
-        background: "black",
+        padding: "10px 25px",
+        margin: "0 6px 6px 6px",
+        background: "rgb(23, 23, 23)",
         textDecoration: "none",
         color: "white",
     };
     
     const activeLink = {
-        background: "yellow",
-        color: "black",
+        color: "rgb(248, 248, 50)",
+        borderColor: "rgb(156, 174, 0)",
     };
     
     return (

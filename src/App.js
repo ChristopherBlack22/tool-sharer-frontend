@@ -14,7 +14,7 @@ const App = ({currentUserId}) => {
 	return (
 		<Router>
 			<div className="App">
-				<h1>Tool Sharer App</h1>
+				<h1 className="title" >Tool Sharer App</h1>
 				{UserLoggedIn(currentUserId) ? <NavBar /> : null}
 				<br/>					
 				<div className="content">
