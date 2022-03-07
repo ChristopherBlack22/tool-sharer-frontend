@@ -1,5 +1,5 @@
 import React from 'react';
-import { updateTool } from '../actions/categoriesAndTools';
+import { updateTool } from '../actions/tools';
 import { connect } from 'react-redux';
 
 const UpdateButton = ({tool, currentUserId, updateTool}) => {

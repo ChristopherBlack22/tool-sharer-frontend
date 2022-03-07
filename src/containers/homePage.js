@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { fetchCategoriesAndTools } from '../actions/categoriesAndTools';
+import { fetchCategories } from '../actions/categories';
+import { fetchTools } from '../actions/tools';
 import { connect } from 'react-redux';
 import CategoriesContainer from './categoriesContainer';
 
 class HomePage extends Component {
 
   componentDidMount(){
-    this.props.fetchCategoriesAndTools()
+    this.props.fetchCategories();
+    this.props.fetchTools();
   }
 
   render() {
@@ -28,7 +30,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      fetchCategoriesAndTools: () => dispatch(fetchCategoriesAndTools())
+      fetchCategories: () => dispatch(fetchCategories()),
+      fetchTools: () => dispatch(fetchTools())
   }
 }
 

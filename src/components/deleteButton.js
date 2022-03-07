@@ -1,5 +1,5 @@
 import React from 'react';
-import { deleteTool } from '../actions/categoriesAndTools';
+import { deleteTool } from '../actions/tools';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 

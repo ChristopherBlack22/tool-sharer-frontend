@@ -2,7 +2,7 @@ import React from 'react';
 import ToolsContainer from './toolsContainer';
 import NewToolForm from '../components/newToolForm';
 import { UserLoggedIn } from '../helpers/helperFunctions';
-import { createNewTool } from '../actions/categoriesAndTools';
+import { createNewTool } from '../actions/tools';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 

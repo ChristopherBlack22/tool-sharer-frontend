@@ -1,12 +1,11 @@
 import { ServerURL, LocalStorageJWT } from '../helpers/helperFunctions';
 const serverURL = ServerURL();
 
-export const fetchCategoriesAndTools = () => {
+export const fetchTools = () => {
     return (dispatch) => {
-        dispatch({type: "FETCHING_CATEGORIES"}); //Sending actions to the reducer to indicate request made
-        dispatch({type: "FETCHING_TOOLS"}); //Both Categories and Tools are being fetched in the same request but notifying separate reducers
+        dispatch({type: "FETCHING_TOOLS"});
 
-        fetch(`${serverURL}/categories`, {
+        fetch(`${serverURL}/tools`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${LocalStorageJWT()}`,
@@ -14,13 +13,6 @@ export const fetchCategoriesAndTools = () => {
         })
         .then(response => response.json())
         .then(jsonData => {
-            //dealing with the returned Categories
-            const jsonCategoriesArray = jsonData.categories;
-            const categories = JSON.parse(jsonCategoriesArray);
-            dispatch({
-                type: "ADD_CATEGORIES", categories
-            });
-            //dealing with the returned Tools
             const jsonToolsArray = jsonData.tools;
             const tools = JSON.parse(jsonToolsArray);
             dispatch({
